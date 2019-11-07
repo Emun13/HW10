@@ -13,7 +13,7 @@
 			// Step 2: Set the URL for the AJAX request to be the JSON file
  
 			request.open("GET", "https://api.spoonacular.com/recipes/search?query=cheese&number=2", true);
-
+			alert(request)
 			console.log("2 - opened request file");
  
 			// Step 3: set up event handler/callback
@@ -55,7 +55,7 @@
 
 <body onload="getWeather()">
 
-	<h1>Weather</h1>
+	<h1>Display Food/Recipes</h1>
 	<div id="data">Loading...</div>
 </body>
 </html>
