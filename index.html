@@ -6,27 +6,26 @@
 	<script>
 		function getCatErroes() {
 			request = new XMLHttpRequest(); 
-			request.open("GET", "https://dog.ceo/api/breeds/image/random");
+			request.open("GET", "https://aws.random.cat/meow?ref=apilist.fun");
 
 			request.onreadystatechange = function() {
 				if (request.readyState == 4 && request.status == 200) {
 					result = request.responseText;
 					jpg = JSON.parse(result);
-					var img = ""
-					img = JSON.stringify(jpg.message)
+					img = JSON.stringify(jpg.file)
 					alert(img)
-					document.getElementById("dogs").src = img;
+					document.getElementById("dogs").src = img;  
 				}
 			}
 			request.send();
-		}
+		}  
 	</script>
 </head>
 
 
 <body onload="getCatErroes()">
 
-	<img id="dogs" src="https:\/\/images.dog.ceo\/breeds\/setter-gordon\/n02101006_2918.jpg" width="30%" height="50%">
+	<img id="dogs" src=img width="30%" height="50%">
 	<button onclick="getCatErroes()">Try it</button>
 
 </body>
