@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>FOOD API</title>
+	<title>Weather API</title>
 	<meta charset="utf-8"/>
 	<script>
 		function getWeather() {
@@ -12,8 +12,8 @@
  
 			// Step 2: Set the URL for the AJAX request to be the JSON file
  
-			request.open("GET", "https://api.spoonacular.com/recipes/search?query=cheese&number=2", true);
-			alert(request)
+			request.open("GET", "https://dog.ceo/api/breeds/image/random", true);
+
 			console.log("2 - opened request file");
  
 			// Step 3: set up event handler/callback
@@ -28,7 +28,10 @@
 					result = request.responseText;
 					alert(result)
 					weather = JSON.parse(result);
+					img = JSON.stringify(weather.message)
+					alert("This is img: " + img)
 					
+					document.getElementById("dogs").src = img;
 					document.getElementById("data").innerHTML ="current temp in boston: " + weather["main"]["temp"]; 
 					
 				}
@@ -54,8 +57,8 @@
 
 
 <body onload="getWeather()">
-
-	<h1>Display Food/Recipes</h1>
+	<img id="dogs" src="" width="30%" height="50%">
+	<h1>Weather</h1>
 	<div id="data">Loading...</div>
 </body>
 </html>
