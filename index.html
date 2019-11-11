@@ -14,6 +14,7 @@
 					jpg = JSON.parse(result);
 					img = JSON.stringify(jpg.file)
 					alert(img)
+					img = img.replace(/^"(.*)"$/, '$1');
 					document.getElementById("dogs").src = img; 
 				}
 			}
