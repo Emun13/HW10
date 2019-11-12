@@ -3,18 +3,30 @@
 <head>
 	<title>Cat Errors</title>
 	<meta charset="utf-8"/>
+	<style type="text/css">
+		body {
+    		background-color: #000000;
+		}
+	</style>
 	<script>
 		function getCatErroes() {
+			//Create a new XMLHttpRequest
 			request = new XMLHttpRequest(); 
+			//Use GET method 
 			request.open("GET", "https://aws.random.cat/meow?ref=apilist.fun");
-
+			//Check the readyState and status 
+			//Parse the API get request, get in JSON format
+			//Use stringify to get specific attribute of the JSON 
 			request.onreadystatechange = function() {
 				if (request.readyState == 4 && request.status == 200) {
 					result = request.responseText;
 					jpg = JSON.parse(result);
+					document.getElementById("data").innerHTML = result
 					img = JSON.stringify(jpg.file)
+					//Delete the extra quotes and change the src of the img
 					img = img.replace(/^"(.*)"$/, '$1');
-					document.getElementById("dogs").src = img; 
+
+					document.getElementById("cats").src = img; 
 				}
 			}
 			request.send();
@@ -24,10 +36,19 @@
 
 
 <body onload="getCatErroes()">
-
-	<img id="dogs" src=img width="30%" height="50%">
-	<button onclick="getCatErroes()">Try it</button>
-
+	<h1 style="position: relative; z-index: 0; color: #FFF; font-size: 30px; margin-top: -1px">JSON Format:</h1>
+	<p style="position: relative; color: #FFF; z-index: 1;" id="data"></p>
+	<button onclick="getCatErroes()" style="position: absolute; z-index: 2; font-size: 20px;">New Cat!</button>
+	<p style="color: #FFF; z-index: 10; position: relative; top: 40px">
+	The API I selected was a random cat API. It can be found on apilist.fun 
+	and the specific API's name is Randomcat. The options I used was using a GET request 
+	and parsing the JSON to get the "file" option, which allowed me to get a variety of images.
+	This API could be useful for large companies. They can take the same idea and create a 
+	data base to hold images of the companies to let users check them out. This can also be 
+	used for an animal adoption website. Users could click on a button which can show them
+	different pictures of cats and descriptions which will help adopting animals, such as 
+	cats, a lot easier. </p>
+	<img id="cats" src=img style="position: relative; top: 30px; width: 30%; height: 0%">
 </body>
 </html>
 
